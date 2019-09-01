@@ -28,9 +28,10 @@
         :key="view.nr.id"
         :style="ready ? { transform: `translate${direction === 'vertical' ? 'Y' : 'X'}(${view.position}px)` } : null"
         class="vue-recycle-scroller__item-view"
-        :class="{ hover: hoverKey === view.nr.key }"
+        :class="{ hover: hoverKey === view.nr.key, clickKey: clickKey === view.nr.key }"
         @mouseenter="hoverKey = view.nr.key"
         @mouseleave="hoverKey = null"
+        @click="clickKey = view.nr.key"
       >
         <slot
           :item="view.item"
@@ -124,6 +125,7 @@ export default {
       totalSize: 0,
       ready: false,
       hoverKey: null,
+      clickKey: null
     }
   },
 
